@@ -1,0 +1,8 @@
+name: "Dependency"
+author: "DigitalEngineering"
+description: "NuGet Dependencies are able to be used"
+
+run:
+  using: 'node16'
+  main: 'dist/index.js'
+  
