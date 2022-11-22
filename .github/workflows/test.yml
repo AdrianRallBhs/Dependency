@@ -32,3 +32,5 @@ jobs:
       #Runs the action that is in this directory
       - name: Run my action
         uses: ./
+        with:
+          name: "Adrianoboy"
