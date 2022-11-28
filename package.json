@@ -10,8 +10,7 @@
     "lint": "eslint src/**/*.js --fix",
     "format": "prettier --check src/**/*.js",
     "all": "npm run format && npm run lint && npm run build",
-    "exec": "node dist/index.js",
-    "uninstall": "node tests\\test-package\\node_modules\\@digitalengineering\\de_id_gt_githooks\\lib\\uninstall.js"
+    "exec": "node dist/index.js"
   },
   "repository": {
     "type": "git",
