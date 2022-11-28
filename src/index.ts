@@ -2,11 +2,7 @@
 // import * as Github from "@actions/github"
 import *  as Core from '@actions/core'
 import * as Github from "@actions/github"
-import path from 'path'
-import fs from 'fs'
-import { execSync } from 'child_process'
 import { context } from "@actions/github/lib/utils"
-const utils = require('./utils')
 
 type GithubContext = typeof Github.context
 
