@@ -7,8 +7,6 @@
     "build": "tsc -p tsconfig.build.json",
     "build-cleanup": "ncc build sr/cleanup.js -o dist/cleanup --license licenses.txt",
     "build-main": "ncc build src/index.js --license licenses.txt",
-    "lint": "eslint src/**/*.js --fix",
-    "format": "prettier --check src/**/*.js",
     "all": "npm run format && npm run lint && npm run build",
     "exec": "node dist/index.js"
   },
@@ -30,12 +28,6 @@
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
     "@actions/io": "^1.1.2",
-    "@vercel/ncc": "^0.34.0",
-    "eslint": "^8.28.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "prettier": "^2.8.0"
+    "@vercel/ncc": "^0.34.0"
   }
 }
