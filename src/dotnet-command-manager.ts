@@ -17,75 +17,76 @@ export class DotnetCommandManager {
         return new DotnetCommandManager(projectfile, dotnetPath)
     }
 
-    async restore(): Promise<void> {
-        const result = await this.exec(['restore', this.projectfile])
-        if (result.exitCode !== 0) {
-            error(`dotnet restore returned non-zero exitcode: ${result.exitCode}`)
-            throw new Error(`dotnet restore returned non-zero exitcode: ${result.exitCode}`)
-        }
-    }
+    // async restore(): Promise<void> {
+    //     const result = await this.exec(['restore', this.projectfile])
+    //     if (result.exitCode !== 0) {
+    //         error(`dotnet restore returned non-zero exitcode: ${result.exitCode}`)
+    //         throw new Error(`dotnet restore returned non-zero exitcode: ${result.exitCode}`)
+    //     }
+    // }
 
-    async listOutdated(versionLimit: string): Promise<OutdatedPackage[]> {
-        let versionFlag = ""
-        switch (versionLimit) {
-            case "minor":
-                versionFlag = "--highest-minor"
-                break
-            case "patch":
-                versionFlag = "--highest-patch"
-                break
-        }
-        const result = await this.exec(['list', this.projectfile, 'package', versionFlag, '--outdated'])
-        if (result.exitCode !== 0) {
-            error(`dotnet restore returned non-zero exitcode: ${result.exitCode}`)
-            throw new Error(`dotnet restore returned non-zero exitcode: ${result.exitCode}`)
-        }
-        const outdated = this.parseListOutput(result.stdout)
-        if (versionFlag !== "") {
-            const latestsVersions = await this.listOutdated("latest")
-            for (const i in latestsVersions) {
-                const wanted = (await outdated).filter(x => x.name === latestsVersions[i].name)[0]
-                latestsVersions[i].wanted = wanted ? wanted.wanted : latestsVersions[i].current
-            }
-            return latestsVersions
-        }
-        return outdated
-    }
+    // async listOutdated(versionLimit: string): Promise<OutdatedPackage[]> {
+    //     let versionFlag = ""
+    //     switch (versionLimit) {
+    //         case "minor":
+    //             versionFlag = "--highest-minor"
+    //             break
+    //         case "patch":
+    //             versionFlag = "--highest-patch"
+    //             break
+    //     }
+    //     const result = await this.exec(['list', this.projectfile, 'package', versionFlag, '--outdated'])
+    //     if (result.exitCode !== 0) {
+    //         error(`dotnet restore returned non-zero exitcode: ${result.exitCode}`)
+    //         throw new Error(`dotnet restore returned non-zero exitcode: ${result.exitCode}`)
+    //     }
+    //     const outdated = this.parseListOutput(result.stdout)
+    //     if (versionFlag !== "") {
+    //         const latestsVersions = await this.listOutdated("latest")
+    //         for (const i in latestsVersions) {
+    //             const wanted = (await outdated).filter(x => x.name === latestsVersions[i].name)[0]
+    //             latestsVersions[i].wanted = wanted ? wanted.wanted : latestsVersions[i].current
+    //         }
+    //         return latestsVersions
+    //     }
+    //     return outdated
+    // }
 
-    async addUpdatedPackage(outdatedPackages: OutdatedPackage[]): Promise<void> {
-        for (const outdatedPackage of outdatedPackages) {
-            const result = await this.exec(['add', this.projectfile, 'package', outdatedPackage.name, '-v', outdatedPackage.wanted])
-            if (result.exitCode !== 0) {
-                error(`dotnet add returned non-zero exitcode: ${result.exitCode}`)
-                throw new Error(`dotnet add returned non-zero exitcode: ${result.exitCode}`)
-            }
-        }
-    }
+    // async addUpdatedPackage(outdatedPackages: OutdatedPackage[]): Promise<void> {
+    //     for (const outdatedPackage of outdatedPackages) {
+    //         const result = await this.exec(['add', this.projectfile, 'package', outdatedPackage.name, '-v', outdatedPackage.wanted])
+    //         if (result.exitCode !== 0) {
+    //             error(`dotnet add returned non-zero exitcode: ${result.exitCode}`)
+    //             throw new Error(`dotnet add returned non-zero exitcode: ${result.exitCode}`)
+    //         }
+    //     }
+    // }
 
-    async exec(args: string[]): Promise<DotnetOutput> {
-        args = args.filter(x => x !== "")
-        const env = {}
-        for (const key of Object.keys(process.env)) {
-            env[key] = process.env[key]
-        }
-        const stdout: string[] = []
-        const stderr: string[] = []
+    // async exec(args: string[]): Promise<DotnetOutput> {
+    //     args = args.filter(x => x !== "")
+    //     const env: string[] = []
+    //     for (const key of Object.keys(process.env.toString())) {
+    //         env[key] = process.env[key]
+    //     }
+    //     const stdout: string[] = []
+    //     const stderr: string[] = []
 
-        const options = {
-            cwd: '.',
-            env,
-            ignoreReturnCode: true,
-            listeners: {
-                stdout: (data: Buffer) => stdout.push(data.toString()),
-                stderr: (data: Buffer) => stderr.push(data.toString())
-            }
-        }
-        const resultcode = await exec.exec(`"${this.dotnetPath}"`, args, options)
-        const result = new DotnetOutput(resultcode)
-        result.stdout = stdout.join('')
-        result.stderr = stderr.join('')
-        return result
-    }
+    //     const options = {
+    //         cwd: '.',
+    //         env,
+    //         ignoreReturnCode: true,
+    //         listeners: {
+    //             stdout: (data: Buffer) => stdout.push(data.toString()),
+    //             stderr: (data: Buffer) => stderr.push(data.toString())
+    //         }
+    //     }
+
+    //     const resultcode = await exec.exec(`"${this.dotnetPath}"`, args, options)
+    //     const result = new DotnetOutput(resultcode)
+    //     result.stdout = stdout.join('')
+    //     result.stderr = stderr.join('')
+    //     return result
+    // }
 
     private async parseListOutput(output: string): Promise<OutdatedPackage[]> {
         const lines = output.split('\n')

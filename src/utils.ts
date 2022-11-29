@@ -17,11 +17,11 @@ const map = {
     '&': '&amp;'
 }
 
-export const escapeString = async (
-    string
-): Promise<string> => {
-    return string.replace(/[\*\(\)\[\]\+\-\\_`#<>]/g, m => map[m])
-}
+// export const escapeString = async (
+//     string: string
+// ): Promise<string> => {
+//     return string.replace(/[\*\(\)\[\]\+\-\\_`#<>]/g, m => map[m])
+// }
 
 export const removeIgnoredDependencies = async (
     dependencies: OutdatedPackage[],
