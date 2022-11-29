@@ -28,6 +28,21 @@ jobs:
 
       - name: Build
         run: npm run build
+
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+      
+      - name: update packages
+        id: update
+        uses: ./
+        with:
+          # version-limit: 'minor'
+          comment-updated: true
+          ignore: |
+            StackExchange.Redis.Extensions.Newtonsoft
       
       #Runs the action that is in this directory
       - name: Run my action
