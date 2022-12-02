@@ -5,7 +5,7 @@
   "main": "dist/dotnet-main.js",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "exec": "node dist/index.js"
+    "exec": "node dist/dotnet-main.js"
   },
   "repository": {
     "type": "git",
