@@ -2,7 +2,7 @@ import * as core from '@actions/core'
 import { statSync } from 'fs'
 import { DotnetCommandManager } from './dotnet-command-manager'
 import { getAllProjects } from './dotnet-project-locator'
-//import { PrBodyHelper } from './pr-body'
+//
 import { removeIgnoredDependencies } from './utils'
 
 async function execute(): Promise<void> {
