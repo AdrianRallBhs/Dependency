@@ -37,7 +37,7 @@ jobs:
       
       - name: update packages
         id: update
-        uses: actions/main
+        uses: ./
         with:
           # version-limit: 'minor'
           comment-updated: true
