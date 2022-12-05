@@ -3,10 +3,10 @@ author: "DigitalEngineering"
 description: "NuGet Dependencies are able to be used"
 
 inputs:
-  # name:
-  #   description: "name to greet"
-  #   required: false
-  #   default: "Adi"
+  name:
+    description: "name to greet"
+    required: false
+    default: "Adi"
   # token:
   # # dotnet nuget add source --username USERNAME --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/OWNER/index.json"
   #   description: "token"
@@ -55,4 +55,4 @@ outputs:
 
 runs:
   using: 'node16'
-  main: 'dist/dotnet-main.js'
+  main: 'dist/index.js'
