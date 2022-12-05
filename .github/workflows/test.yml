@@ -48,4 +48,4 @@ jobs:
       - name: Run my action
         uses: ./
         with:
-          name: "Adrianoboy"
+          name: "Adriano Cellentano"
