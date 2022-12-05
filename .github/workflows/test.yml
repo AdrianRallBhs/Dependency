@@ -35,17 +35,8 @@ jobs:
         with:
           dotnet-version: 6.0.x
       
-      - name: update packages
-        uses: ./
-        id: update
-        with:
-          version-limit: 'minor'
-          comment-updated: true
-          ignore: |
-            StackExchange.Redis.Extensions.Newtonsoft
-      
       #Runs the action that is in this directory
-      # - name: Run my action
-      #   uses: ./
-      #   with:
-      #     name: "Adrianoboy"
+      - name: Run my action
+        uses: ./
+        with:
+          name: "Adrianoboy"
