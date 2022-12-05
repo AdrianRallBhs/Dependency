@@ -56,3 +56,4 @@ outputs:
 runs:
   using: 'node16'
   main: 'dist/dotnet-main.js'
+
