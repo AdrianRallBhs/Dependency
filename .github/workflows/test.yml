@@ -44,7 +44,7 @@ jobs:
           ignore: |
             StackExchange.Redis.Extensions.Newtonsoft
       
-      Runs the action that is in this directory
+      #Runs the action that is in this directory
       - name: Run my action
         uses: ./
         with:
