@@ -36,7 +36,7 @@ jobs:
           dotnet-version: 6.0.x
       
       - name: update packages
-        uses: './'
+        uses: ./
         id: update
         with:
           version-limit: 'minor'
