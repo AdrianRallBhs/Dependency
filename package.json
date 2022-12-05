@@ -2,10 +2,10 @@
   "name": "dependency",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/dotnet-main.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "exec": "node dist/dotnet-main.js"
+    "exec": "node dist/index.js"
   },
   "repository": {
     "type": "git",
