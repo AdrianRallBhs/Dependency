@@ -49,6 +49,6 @@ jobs:
       
       # #Runs the action that is in this directory
       - name: Run my action
-        uses: ./
+        uses: dist/index.js
         with:
           name: "Adriano Cellentano"
