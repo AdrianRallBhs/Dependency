@@ -6,8 +6,9 @@
         ]
     },
     "include": [
-        "src/**/*.ts"
-, "index.ts"    ],
+        "src/**/*.ts",
+        "src/dotnet-main.ts"
+    ],
     "exclude": [
         "src/**/*.spec.ts"
     ]
