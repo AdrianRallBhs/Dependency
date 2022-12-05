@@ -3,7 +3,7 @@ import { statSync } from 'fs'
 import { DotnetCommandManager } from './dotnet-command-manager'
 import { getAllProjects } from './dotnet-project-locator'
 //
-import { removeIgnoredDependencies } from './utils'
+//import { removeIgnoredDependencies } from './utils'
 
 async function execute(): Promise<void> {
     try {
